@@ -1,0 +1,92 @@
+
+<div class="container col-md-6">
+    <h1>Create Tourist</h1>
+    
+    <form #userForm="ngForm" (ngSubmit)="registerTourist()">
+        
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Id</label>
+            <input type="text" class="form-control" id="id" name="id" [(ngModel)]="tourist.id"
+            placeholder="Give Your id number" value="" required  pattern="[0-9]+" maxlength="4" #id="ngModel" >
+            <span *ngIf="id.invalid && (id.dirty || id.untouched)">
+                <small class="text-danger" *ngIf="id.errors?.['required']">This is compulsory field</small>
+                <small class="text-danger" *ngIf="id.errors?.['pattern']">Only numbers are allowed</small>
+
+            </span>
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="firstName" name="firstName" [(ngModel)]="tourist.firstName"
+            placeholder="what is your First Name" required  pattern="[A-Z && a-z]+" maxlength="15" #firstName="ngModel">
+            <span *ngIf="firstName.invalid && (firstName.dirty || firstName.untouched)">
+                <small class="text-danger" *ngIf="firstName.errors?.['required']">This is compulsory field</small>
+                <small class="text-danger" *ngIf="firstName.errors?.['pattern']">Only alphabets are allowed</small>
+
+            </span>
+        </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="lastName"  name="lastName" [(ngModel)]="tourist.lastName"
+            placeholder="what is your Last Name" required  pattern="[A-Za-z]+$" maxlength="12" #lastName="ngModel">
+            <span *ngIf="lastName.invalid && (lastName.dirty || lastName.untouched)">
+                <small class="text-danger" *ngIf="lastName.errors?.['required']">This is compulsory field</small>
+                <small class="text-danger" *ngIf="lastName.errors?.['pattern']">Only alphabets are allowed</small>
+
+            </span>
+        </div>
+          
+          <div>
+            <label for="exampleFormControlInput1" class="form-label">Gender</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio"  id="male"  value="male" name="gender" [(ngModel)]="tourist.gender">
+            <label class="form-check-label" for="flexRadioDefault1">
+              Male
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio"  id="female"  name="gender" value="female" [(ngModel)]="tourist.gender">
+            <label class="form-check-label" for="flexRadioDefault2">
+              Female
+            </label>
+          </div>
+          </div>
+          
+          
+          
+        
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Age</label>
+            <input type="text" class="form-control" id="age"  name="age" [(ngModel)]="tourist.age"
+            placeholder="How many years are you old" required  pattern="[0-9]+" maxlength="2" max="90" min="0"  #age="ngModel">
+            <span *ngIf="age.invalid && (age.dirty || age.untouched)">
+                <small class="text-danger" *ngIf="age.errors?.['required']">This is compulsory field</small>
+                <small class="text-danger" *ngIf="age.errors?.['pattern']">Only numbers are allowed </small>
+
+            </span>
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">From Place</label>
+            <input type="text" class="form-control" id="fromPlace" name="formPlace" [(ngModel)]="tourist.fromPlace"
+            placeholder="where are you from" required  pattern="[A-Za-z]+$" maxlength="15" #fromPlace="ngModel">
+            <span *ngIf="fromPlace.invalid && (fromPlace.dirty || fromPlace.untouched)">
+                <small class="text-danger" *ngIf="fromPlace.errors?.['required']">This is compulsory field</small>
+                <small class="text-danger" *ngIf="fromPlace.errors?.['pattern']">Only alphabets are allowed </small>
+
+            </span>
+        </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Number Of Days</label>
+            <input type="text" class="form-control" id="numberOfdays" name="numberOfdays" [(ngModel)]="tourist.numberOfdays"
+            placeholder="How many days you want to stay" required  pattern="[0-9]+" maxlength="5"  #numberOfdays="ngModel">
+            <span *ngIf="numberOfdays.invalid && (numberOfdays.dirty || numberOfdays.untouched)">
+                <small class="text-danger" *ngIf="numberOfdays.errors?.['required']">This is compulsory field</small>
+                <small class="text-danger" *ngIf="numberOfdays.errors?.['pattern']">Only numbers are allowed </small>
+
+            </span>
+        </div>
+
+          <button type="submit" class="btn btn-primary" [disabled]="!userForm.valid">Register</button>
+
+    </form>
+</div>
+
